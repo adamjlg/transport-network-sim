@@ -11,28 +11,6 @@ The project models trains moving through connected nodes and edges, validates ro
 - Validation for missing nodes, invalid routes, missing edges, and invalid timing values
 - Event logging for departures, arrivals, headway blocking, and completed services
 - Pytest coverage for behaviour and benchmark tests for performance baselining
-<!-- 
-## Project structure
-
-```text
-transport-network-sim/
-├── edge.py
-├── network.py
-├── node.py
-├── simulation.py
-├── train.py
-├── validation_error.py
-├── simple_train_sim.py
-├── network_config.json
-├── scenarios/
-│   ├── small_linear.json
-│   ├── medium_shared_corridor.json
-│   └── large_branching.json
-└── tests/
-    ├── conftest.py
-    ├── test_simulation.py
-    └── test_benchmark_run.py
-``` -->
 
 ## Scenario format
 
