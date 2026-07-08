@@ -1,7 +1,7 @@
 # tests/test_benchmark_run.py
 from pathlib import Path
 import pytest
-from simulation import Simulation
+from src.transport_network_sim.simulation import Simulation
 
 SCENARIOS= [
     Path("tests/scenarios/small_linear.json"),

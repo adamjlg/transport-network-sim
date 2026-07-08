@@ -1,9 +1,9 @@
 from typing import Optional
 from dataclasses import dataclass, field
 from typing import Dict, Tuple
-from edge import Edge
-from node import Node
-from validation_error import ValidationError
+from transport_network_sim.edge import Edge
+from transport_network_sim.node import Node
+from transport_network_sim.validation_error import ValidationError
 
 @dataclass
 class Network:

@@ -65,34 +65,35 @@ Scenarios are defined as JSON with top-level `headway`, `nodes`, `edges`, and `t
 - `pytest`
 - `pytest-benchmark`
 
-### Install test dependencies
+### Install test dependencies, this will use venv
 
 ```bash
-python -m pip install pytest pytest-benchmark
+./setup_venv.sh
 ```
-
 ## Running the simulation
 
-Run the basic example:
+Run the basic application:
 
 ```bash
-python simple_train_sim.py
+./run.sh
 ```
 
 This loads a JSON network configuration, runs the simulation, prints event logs, and then prints a simple summary of train state at the end.
+
 
 ## Running tests
 
 Run the functional tests:
 
 ```bash
-PYTHONPATH=. python -m pytest
+./test.sh
 ```
+
 
 Run only the benchmark tests:
 
 ```bash
-PYTHONPATH=. python -m pytest tests/test_benchmark_run.py --benchmark-only
+./bench.sh
 ```
 
 ## Benchmark results

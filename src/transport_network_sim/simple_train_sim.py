@@ -1,8 +1,8 @@
 from pathlib import Path
-from simulation import Simulation
+from transport_network_sim.simulation import Simulation
 
 def main():
-    config_path = Path('network_config.json')
+    config_path = Path('src/transport_network_sim/network_config.json')
     simulation = Simulation.from_json(config_path)
     events = simulation.run(max_time=60)
 
