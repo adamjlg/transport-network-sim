@@ -1,0 +1,122 @@
+# Transport Network Sim
+
+A small Python-based transport network simulation for exploring route movement, headway-based deconfliction, and operational conflicts on a shared network.
+
+The project models trains moving through connected nodes and edges, validates route definitions from JSON, logs movement and blocking events, and includes benchmark tests to measure how simulation runtime scales with scenario complexity.
+
+## Features
+
+- JSON-driven scenario loading
+- OOP simulation model with separate network and vehicle state
+- Validation for missing nodes, invalid routes, missing edges, and invalid timing values
+- Event logging for departures, arrivals, headway blocking, and completed services
+- Pytest coverage for behaviour and benchmark tests for performance baselining
+<!-- 
+## Project structure
+
+```text
+transport-network-sim/
+├── edge.py
+├── network.py
+├── node.py
+├── simulation.py
+├── train.py
+├── validation_error.py
+├── simple_train_sim.py
+├── network_config.json
+├── scenarios/
+│   ├── small_linear.json
+│   ├── medium_shared_corridor.json
+│   └── large_branching.json
+└── tests/
+    ├── conftest.py
+    ├── test_simulation.py
+    └── test_benchmark_run.py
+``` -->
+
+## Scenario format
+
+Scenarios are defined as JSON with top-level `headway`, `nodes`, `edges`, and `trains`.
+
+```json
+{
+  "headway": 1,
+  "nodes": ["A", "B", "C"],
+  "edges": [
+    { "from": "A", "to": "B", "travel_time": 2 },
+    { "from": "B", "to": "C", "travel_time": 3 }
+  ],
+  "trains": [
+    {
+      "id": "T1",
+      "route": ["A", "B", "C"],
+      "start_time": 0,
+      "dwell": 1
+    }
+  ]
+}
+```
+
+## Getting started
+
+### Requirements
+
+- Python 3.8+
+- `pytest`
+- `pytest-benchmark`
+
+### Install test dependencies
+
+```bash
+python -m pip install pytest pytest-benchmark
+```
+
+## Running the simulation
+
+Run the basic example:
+
+```bash
+python simple_train_sim.py
+```
+
+This loads a JSON network configuration, runs the simulation, prints event logs, and then prints a simple summary of train state at the end.
+
+## Running tests
+
+Run the functional tests:
+
+```bash
+PYTHONPATH=. python -m pytest
+```
+
+Run only the benchmark tests:
+
+```bash
+PYTHONPATH=. python -m pytest tests/test_benchmark_run.py --benchmark-only
+```
+
+## Benchmark results
+
+The current Python benchmark baseline measures `Simulation.run()` across three scenarios of increasing complexity using `pytest-benchmark`.
+
+| Scenario | Mean time | Median time | Relative mean | Notes |
+|---|---:|---:|---:|---|
+| `small_linear` | 190.2133 us | 184.3240 us | 1.0x | Small linear route with light contention |
+| `medium_shared_corridor` | 455.5177 us | 412.9955 us | 2.39x | More trains sharing central edges |
+| `large_branching` | 538.5086 us | 483.6720 us | 2.83x | Branching and merge points increase routing interaction |
+
+These results are useful as a baseline because they show runtime increasing with both network size and conflict complexity, which gives a clear justification for later moving the hot `run()` path into C++ for comparison.
+
+## Roadmap
+
+Planned next steps:
+
+- More behavioural tests and scenario coverage
+- More complex branching networks and route interactions
+- Improved deconfliction logic using richer timing or speed profiles
+- A simple 2D visualiser for network state and event playback
+- A C++ implementation of the `run()` engine with direct benchmark comparison against the Python baseline
+
+## Notes
+
+This is still an early-stage project, but the aim is for it to grow into a more realistic simulation repo that demonstrates modelling, validation, benchmarking, and performance-driven refactoring in a way that feels relevant to autonomous system simulations.
