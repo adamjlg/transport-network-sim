@@ -1,0 +1,21 @@
+{
+  "headway": 1,
+  "nodes": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "edges": [
+    { "from": "A", "to": "B", "travel_time": 2 },
+    { "from": "B", "to": "C", "travel_time": 2 },
+    { "from": "C", "to": "D", "travel_time": 2 },
+    { "from": "D", "to": "E", "travel_time": 2 },
+    { "from": "E", "to": "F", "travel_time": 2 },
+    { "from": "F", "to": "G", "travel_time": 2 },
+    { "from": "G", "to": "H", "travel_time": 2 }
+  ],
+  "trains": [
+    { "id": "T1", "route": ["A", "B", "C", "D", "E", "F"], "start_time": 0, "dwell": 1 },
+    { "id": "T2", "route": ["A", "B", "C", "D", "E", "F"], "start_time": 1, "dwell": 1 },
+    { "id": "T3", "route": ["B", "C", "D", "E", "F", "G"], "start_time": 0, "dwell": 1 },
+    { "id": "T4", "route": ["B", "C", "D", "E", "F", "G"], "start_time": 2, "dwell": 1 },
+    { "id": "T5", "route": ["C", "D", "E", "F", "G", "H"], "start_time": 1, "dwell": 1 },
+    { "id": "T6", "route": ["C", "D", "E", "F", "G", "H"], "start_time": 3, "dwell": 1 }
+  ]
+}
