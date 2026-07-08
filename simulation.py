@@ -1,10 +1,10 @@
 import json
 from typing import List
-from Edge import Edge
-from Node import Node
-from Train import Train
-from Network import Network
-from ValidationError import ValidationError
+from edge import Edge
+from node import Node
+from train import Train
+from network import Network
+from validation_error import ValidationError
 
 class Simulation:
     def __init__(self, network, trains, headway):

@@ -1,5 +1,5 @@
 from pathlib import Path
-from Simulation import Simulation
+from simulation import Simulation
 
 def main():
     config_path = Path('network_config.json')
@@ -14,3 +14,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    
